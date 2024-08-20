@@ -1,26 +1,10 @@
-variable "name" {
-  description = "Prefix for resource names"
-  type        = string
-}
-
-variable "pipeline_arn" {
-  type        = string
-}
-
-variable "s3_bucket" {
-  type        = string
-}
-
-variable "build_name" {
-  type        = string
-}
-
-variable "repo_owner" {
-  type        = string
-}
-variable "repo_name" {
-  type        = string
-}
-variable "repo_branch" {
-  type        = string
-}
+variable "name" {}
+variable "pipeline_arn" {}
+variable "s3_bucket" {}
+variable "build_name" {}
+variable "FullRepositoryId" {}
+variable "BranchName" {}
+variable "ConnectionArn" {}
+variable "BuildProjectName" {}
+variable "Provider" {}
+variable "EnvironmentName" {}
