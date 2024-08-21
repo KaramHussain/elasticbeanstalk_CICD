@@ -97,3 +97,47 @@ module "codebuild" {
 Each module has its own set of variables defined in variables.tf. Ensure you provide the necessary values for these variables when using the module.
 
 For example, in modules/code_build/variables.tf, the name variable is required for naming the CodeBuild project.
+
+# Prerequisites
+1. Github connection which you have to create manually using aws console as it needs to authenticate to your GitHub account
+2. Add a buildspec.yaml file in root folder of your repository 
+
+```yaml
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 8.0
+    commands:
+      - echo "Installing .NET Core 8.0"
+
+  pre_build:
+    commands:
+      - echo "Restoring .NET packages"
+      - dotnet restore  WebApplication1.sln || exit 1
+
+  build:
+    commands:
+      - echo "Building the .NET application"
+      - dotnet build WebApplication1.sln --configuration Release || exit 1
+      - echo "Publishing the .NET application"
+      - dotnet publish WebApplication1/WebApplication1.csproj --configuration Release --output ./output || exit 1
+
+  post_build:
+    commands:
+      - echo "Zipping the output files"
+      - zip -r output.zip ./output || exit 1
+      - echo "Copying files to S3"
+      - aws s3 cp output.zip s3://webapplication1-artifacts-bucket/output.zip || exit 1
+
+artifacts:
+  files:
+    - output/**
+  discard-paths: yes
+
+  ```
+
+  ## .NetFramework Repository
+  https://github.com/KaramHussain/WebApplication1
