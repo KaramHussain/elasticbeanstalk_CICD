@@ -5,6 +5,22 @@ variable "region" {
 ##################################################
 ##################   VPC   #######################
 ##################################################
+
+# VPC_CIDR
+variable "vpc_cidr" {
+  description = "value of the VPC CIDR block"
+  type        = string
+  default     = "10.0.0.0/24" 
+}
+
+# Declare variable for VPC name
+variable "vpc_name" {
+  description = "value of the VPC name"
+  type        = string
+  default     = "sample-vpc"
+}
+
+
 # Declare variable for private subnet CIDR blocks
 
 variable "private_subnet_cidr_blocks" {

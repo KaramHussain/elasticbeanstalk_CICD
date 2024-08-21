@@ -10,8 +10,8 @@ provider "aws" {
 # Creating VPC
 module "vpc" {
   source                     = "./modules/vpc"
-  vpc_cidr_block             = "10.0.0.0/16"
-  vpc_name                   = "sample-vpc"
+  vpc_cidr_block             = var.vpc_cidr
+  vpc_name                   = var.vpc_name
   public_subnet_cidr_blocks  = var.public_subnet_cidr_blocks
   private_subnet_cidr_blocks = var.private_subnet_cidr_blocks
   availability_zones         = var.availability_zones
