@@ -1,6 +1,6 @@
 # Multi-Tier Web Application on AWS Elastic Beanstalk
 
-![alt text](elasticbeanstalk.drawio-1.png)
+![alt text](elasticbeanstalk.drawio.png)
 # Terraform Infrastructure Setup
 
 This repository contains Terraform configurations for deploying various AWS services, including CodeBuild, CodePipeline, EC2 Instance Profiles, Elastic Beanstalk, IAM roles, S3 Buckets, and Security Groups. The modules are organized to facilitate reuse and modularity. Below is an overview of each module, along with instructions on how to use them.
