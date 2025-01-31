@@ -1,0 +1,20 @@
+name: Updating the Application
+
+on:   
+  push:    
+    branches: [ Production ]
+
+jobs:    
+  build:        
+    name: Running Script    
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: SSH into server and execute script      
+        uses: appleboy/ssh-action@master      
+        with:
+          host: 54.235.165.223
+          username: ubuntu
+          key: ${{ secrets.DEV_SERVER_KEY }}
+          script: |
+            ./update.sh
